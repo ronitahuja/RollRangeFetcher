@@ -1,7 +1,10 @@
 from tkinter import Tk, Label, Entry, Button
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 import os
+
+# C:\Users\Ronit Ahuja\OneDrive\Desktop\RollRangeFetcher
+# https://www.osmania.ac.in/res07/becbcsaug24.jsp
 
 def take_ss(num, desktop_path, site_link, driver):
     try:
@@ -21,7 +24,8 @@ def on_submit(root):
     desktop_path = entry_path.get()
     site_link = entry_link.get()
 
-    driver = webdriver.Chrome(ChromeDriverManager().install())
+    sevice=Service("C:\\webdrivers\\chromedriver.exe")
+    driver = webdriver.Chrome(service=sevice)
     for i in range(start_number, end_number + 1):
         take_ss(i, desktop_path, site_link,driver)
     root.destroy()
